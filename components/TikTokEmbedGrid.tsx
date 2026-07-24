@@ -14,7 +14,7 @@ function extractId(url: string): string {
 export default function TikTokEmbedGrid({ urls }: TikTokEmbedGridProps) {
   return (
     <div>
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+      <div className="flex flex-wrap justify-center gap-6">
         {urls.map((url) => {
           const videoId = extractId(url);
           return (
@@ -23,7 +23,7 @@ export default function TikTokEmbedGrid({ urls }: TikTokEmbedGridProps) {
               className="tiktok-embed"
               cite={url}
               data-video-id={videoId}
-              style={{ maxWidth: "100%", minWidth: 0 }}
+              style={{ maxWidth: "325px", minWidth: "325px" }}
             >
               <section>
                 <a target="_blank" rel="noopener noreferrer" href={url}>

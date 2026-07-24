@@ -36,18 +36,24 @@ export default function ProjectGallery({ galleries }: ProjectGalleryProps) {
       )}
       <div className="mt-4 flex flex-wrap items-start gap-3">
         {active.images.map((img) => (
-          <div
-            key={img.src}
-            className="h-56 overflow-hidden rounded-lg border border-border bg-border/20 sm:h-64"
-            style={{ aspectRatio: `${img.width} / ${img.height}` }}
-          >
-            <Image
-              src={img.src}
-              alt={`${active.label} sample`}
-              width={img.width}
-              height={img.height}
-              className="h-full w-full object-cover"
-            />
+          <div key={img.src} className="flex flex-col gap-2">
+            <div
+              className="h-56 overflow-hidden rounded-lg border border-border bg-border/20 sm:h-64"
+              style={{ aspectRatio: `${img.width} / ${img.height}` }}
+            >
+              <Image
+                src={img.src}
+                alt={img.caption ?? `${active.label} sample`}
+                width={img.width}
+                height={img.height}
+                className="h-full w-full object-cover"
+              />
+            </div>
+            {img.caption && (
+              <span className="text-center text-xs font-medium uppercase tracking-wide text-muted">
+                {img.caption}
+              </span>
+            )}
           </div>
         ))}
       </div>

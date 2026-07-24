@@ -7,6 +7,15 @@ export const projects: Project[] = [
       "Led content strategy, creative direction, and UX optimization for a 200+ page enterprise website redesign that strengthened brand storytelling and improved the customer experience.",
     tags: ["Content Strategy", "UX Optimization", "AEM", "Lead Generation"],
     image: "/images/project-appian.svg",
+    galleries: [
+      {
+        label: "Homepage Redesign",
+        images: [
+          { src: "/images/appian/before.jpg", width: 1600, height: 1400, caption: "Before" },
+          { src: "/images/appian/after.jpg", width: 1600, height: 1400, caption: "After" },
+        ],
+      },
+    ],
   },
   {
     title: "UDance Digital Campaign",
@@ -15,14 +24,6 @@ export const projects: Project[] = [
     tags: ["Brand Design", "Social Media", "Event Branding", "Fundraising"],
     image: "/images/udance/graphics-1.jpg",
     galleries: [
-      {
-        label: "Merch Design",
-        images: [
-          { src: "/images/udance/merch-1.jpg", width: 1400, height: 788 },
-          { src: "/images/udance/merch-2.jpg", width: 1400, height: 788 },
-          { src: "/images/udance/merch-3.jpg", width: 1400, height: 788 },
-        ],
-      },
       {
         label: "Social Graphics",
         images: [
@@ -37,6 +38,20 @@ export const projects: Project[] = [
           { src: "/images/udance/dayof-1.jpg", width: 1400, height: 1332 },
           { src: "/images/udance/dayof-2.png", width: 1144, height: 1400 },
           { src: "/images/udance/dayof-3.png", width: 1080, height: 1080 },
+          { src: "/images/udance/event-photo-1.jpg", width: 1050, height: 1400 },
+          { src: "/images/udance/event-photo-2.jpg", width: 1050, height: 1400 },
+          { src: "/images/udance/event-photo-3.jpg", width: 1050, height: 1400 },
+          { src: "/images/udance/event-photo-4.jpg", width: 1050, height: 1400 },
+          { src: "/images/udance/event-photo-5.jpg", width: 1400, height: 1050 },
+          { src: "/images/udance/event-photo-6.jpg", width: 1050, height: 1400 },
+        ],
+      },
+      {
+        label: "Merch Design",
+        images: [
+          { src: "/images/udance/merch-1.jpg", width: 1400, height: 788 },
+          { src: "/images/udance/merch-2.jpg", width: 1400, height: 788 },
+          { src: "/images/udance/merch-3.jpg", width: 1400, height: 788 },
         ],
       },
     ],
@@ -74,6 +89,27 @@ export const projects: Project[] = [
     tags: ["Photography", "Lightroom", "Creative Direction", "Instagram"],
     liveUrl: "https://instagram.com/shot.by.sabrina",
     image: "/images/project-photography.svg",
+    galleries: [
+      {
+        label: "Photography",
+        images: [
+          { src: "/images/photography/photo-1.jpg", width: 1400, height: 935 },
+          { src: "/images/photography/photo-2.jpg", width: 1400, height: 933 },
+          { src: "/images/photography/photo-3.jpg", width: 933, height: 1400 },
+          { src: "/images/photography/photo-4.jpg", width: 933, height: 1400 },
+          { src: "/images/photography/photo-5.jpg", width: 933, height: 1400 },
+          { src: "/images/photography/photo-6.jpg", width: 1400, height: 933 },
+          { src: "/images/photography/photo-7.jpg", width: 1400, height: 933 },
+          { src: "/images/photography/photo-8.jpg", width: 1400, height: 933 },
+          { src: "/images/photography/photo-9.jpg", width: 933, height: 1400 },
+          { src: "/images/photography/photo-10.jpg", width: 1400, height: 933 },
+          { src: "/images/photography/photo-11.jpg", width: 933, height: 1400 },
+          { src: "/images/photography/photo-12.jpg", width: 1400, height: 933 },
+          { src: "/images/photography/photo-13.jpg", width: 1400, height: 933 },
+          { src: "/images/photography/photo-14.jpg", width: 1400, height: 933 },
+        ],
+      },
+    ],
   },
   {
     title: "@milo.the.puggle",
