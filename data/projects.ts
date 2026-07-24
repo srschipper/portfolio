@@ -18,25 +18,25 @@ export const projects: Project[] = [
       {
         label: "Merch Design",
         images: [
-          "/images/udance/merch-1.jpg",
-          "/images/udance/merch-2.jpg",
-          "/images/udance/merch-3.jpg",
+          { src: "/images/udance/merch-1.jpg", width: 1400, height: 788 },
+          { src: "/images/udance/merch-2.jpg", width: 1400, height: 788 },
+          { src: "/images/udance/merch-3.jpg", width: 1400, height: 788 },
         ],
       },
       {
         label: "Social Graphics",
         images: [
-          "/images/udance/graphics-1.jpg",
-          "/images/udance/graphics-2.jpg",
-          "/images/udance/graphics-3.jpg",
+          { src: "/images/udance/graphics-1.jpg", width: 787, height: 1400 },
+          { src: "/images/udance/graphics-2.jpg", width: 787, height: 1400 },
+          { src: "/images/udance/graphics-3.jpg", width: 787, height: 1400 },
         ],
       },
       {
         label: "Event Day-Of",
         images: [
-          "/images/udance/dayof-1.jpg",
-          "/images/udance/dayof-2.png",
-          "/images/udance/dayof-3.png",
+          { src: "/images/udance/dayof-1.jpg", width: 1400, height: 1332 },
+          { src: "/images/udance/dayof-2.png", width: 1144, height: 1400 },
+          { src: "/images/udance/dayof-3.png", width: 1080, height: 1080 },
         ],
       },
     ],
@@ -51,18 +51,18 @@ export const projects: Project[] = [
       {
         label: "Coach Spotlights",
         images: [
-          "/images/hustle/spotlight-1.jpg",
-          "/images/hustle/spotlight-2.jpg",
-          "/images/hustle/spotlight-3.jpg",
+          { src: "/images/hustle/spotlight-1.jpg", width: 787, height: 1400 },
+          { src: "/images/hustle/spotlight-2.jpg", width: 787, height: 1400 },
+          { src: "/images/hustle/spotlight-3.jpg", width: 787, height: 1400 },
         ],
       },
       {
         label: "Campaign Graphics",
         images: [
-          "/images/hustle/campaign-1.jpg",
-          "/images/hustle/campaign-2.jpg",
-          "/images/hustle/campaign-3.jpg",
-          "/images/hustle/campaign-4.jpg",
+          { src: "/images/hustle/campaign-1.jpg", width: 787, height: 1400 },
+          { src: "/images/hustle/campaign-2.jpg", width: 787, height: 1400 },
+          { src: "/images/hustle/campaign-3.jpg", width: 787, height: 1400 },
+          { src: "/images/hustle/campaign-4.jpg", width: 787, height: 1400 },
         ],
       },
     ],

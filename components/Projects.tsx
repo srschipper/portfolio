@@ -13,25 +13,41 @@ export default function Projects() {
           title="Projects"
           subtitle="Campaigns, creative work, and digital experiences I'm proud of."
         />
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
+        <div className="flex flex-col gap-8">
           {projects.map((project) => (
             <article
               key={project.title}
-              className="group overflow-hidden rounded-xl border border-border bg-background transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              className="overflow-hidden rounded-2xl border border-border bg-background"
             >
-              {project.image && (
-                <div className="relative aspect-video overflow-hidden border-b border-border bg-border/30">
-                  <Image
-                    src={project.image}
-                    alt={`Screenshot of ${project.title}`}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
+              <div className="p-6 sm:p-8">
+                <div className="flex flex-wrap items-start justify-between gap-4">
+                  <div className="max-w-2xl">
+                    <h3 className="text-2xl font-semibold text-foreground">{project.title}</h3>
+                    <p className="mt-2 text-muted">{project.description}</p>
+                  </div>
+                  <div className="flex gap-4 shrink-0">
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-medium text-accent transition-colors hover:text-accent-hover"
+                      >
+                        View Work &rarr;
+                      </a>
+                    )}
+                    {project.repoUrl && (
+                      <a
+                        href={project.repoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-medium text-muted transition-colors hover:text-foreground"
+                      >
+                        Source Code &rarr;
+                      </a>
+                    )}
+                  </div>
                 </div>
-              )}
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-foreground">{project.title}</h3>
-                <p className="mt-2 text-muted">{project.description}</p>
                 <ul className="mt-4 flex flex-wrap gap-2" aria-label="Skills and tools used">
                   {project.tags.map((tag) => (
                     <li
@@ -42,31 +58,30 @@ export default function Projects() {
                     </li>
                   ))}
                 </ul>
-                {project.galleries && <ProjectGallery galleries={project.galleries} />}
-                {project.tiktokEmbeds && <TikTokEmbedGrid urls={project.tiktokEmbeds} />}
-                <div className="mt-5 flex gap-4">
-                  {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm font-medium text-accent transition-colors hover:text-accent-hover"
-                    >
-                      View Work &rarr;
-                    </a>
-                  )}
-                  {project.repoUrl && (
-                    <a
-                      href={project.repoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm font-medium text-muted transition-colors hover:text-foreground"
-                    >
-                      Source Code &rarr;
-                    </a>
-                  )}
-                </div>
               </div>
+
+              {project.galleries && (
+                <div className="border-t border-border bg-border/10 p-6 sm:p-8">
+                  <ProjectGallery galleries={project.galleries} />
+                </div>
+              )}
+
+              {project.tiktokEmbeds && (
+                <div className="border-t border-border bg-border/10 p-6 sm:p-8">
+                  <TikTokEmbedGrid urls={project.tiktokEmbeds} />
+                </div>
+              )}
+
+              {!project.galleries && !project.tiktokEmbeds && project.image && (
+                <div className="relative aspect-video overflow-hidden border-t border-border bg-border/30">
+                  <Image
+                    src={project.image}
+                    alt={`Screenshot of ${project.title}`}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              )}
             </article>
           ))}
         </div>

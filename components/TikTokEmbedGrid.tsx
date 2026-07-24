@@ -13,7 +13,7 @@ function extractId(url: string): string {
 
 export default function TikTokEmbedGrid({ urls }: TikTokEmbedGridProps) {
   return (
-    <div className="mt-5">
+    <div>
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
         {urls.map((url) => {
           const videoId = extractId(url);

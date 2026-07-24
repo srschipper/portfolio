@@ -13,37 +13,40 @@ export default function ProjectGallery({ galleries }: ProjectGalleryProps) {
   const active = galleries[activeIndex];
 
   return (
-    <div className="mt-5">
-      <div className="flex flex-wrap gap-2" role="tablist" aria-label="Project categories">
-        {galleries.map((gallery, index) => (
-          <button
-            key={gallery.label}
-            type="button"
-            role="tab"
-            aria-selected={index === activeIndex}
-            onClick={() => setActiveIndex(index)}
-            className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
-              index === activeIndex
-                ? "bg-accent text-white"
-                : "bg-border/40 text-muted hover:bg-border/70 hover:text-foreground"
-            }`}
-          >
-            {gallery.label}
-          </button>
-        ))}
-      </div>
-      <div className="mt-4 grid grid-cols-3 gap-2">
-        {active.images.map((src) => (
+    <div>
+      {galleries.length > 1 && (
+        <div className="flex flex-wrap gap-2" role="tablist" aria-label="Project categories">
+          {galleries.map((gallery, index) => (
+            <button
+              key={gallery.label}
+              type="button"
+              role="tab"
+              aria-selected={index === activeIndex}
+              onClick={() => setActiveIndex(index)}
+              className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
+                index === activeIndex
+                  ? "bg-accent text-white"
+                  : "bg-border/40 text-muted hover:bg-border/70 hover:text-foreground"
+              }`}
+            >
+              {gallery.label}
+            </button>
+          ))}
+        </div>
+      )}
+      <div className="mt-4 flex flex-wrap items-start gap-3">
+        {active.images.map((img) => (
           <div
-            key={src}
-            className="relative aspect-square overflow-hidden rounded-lg border border-border bg-border/30"
+            key={img.src}
+            className="h-56 overflow-hidden rounded-lg border border-border bg-border/20 sm:h-64"
+            style={{ aspectRatio: `${img.width} / ${img.height}` }}
           >
             <Image
-              src={src}
+              src={img.src}
               alt={`${active.label} sample`}
-              fill
-              sizes="(max-width: 640px) 33vw, 160px"
-              className="object-cover transition-transform duration-300 hover:scale-105"
+              width={img.width}
+              height={img.height}
+              className="h-full w-full object-cover"
             />
           </div>
         ))}

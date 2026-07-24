@@ -13,9 +13,15 @@ export interface Profile {
   socials: Socials;
 }
 
+export interface GalleryImage {
+  src: string;
+  width: number;
+  height: number;
+}
+
 export interface ProjectGallery {
   label: string;
-  images: string[];
+  images: GalleryImage[];
 }
 
 export interface Project {
