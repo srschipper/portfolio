@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import type { ProjectGallery as ProjectGalleryType } from "@/lib/types";
+import type { GalleryImage, ProjectGallery as ProjectGalleryType } from "@/lib/types";
 
 interface ProjectGalleryProps {
   galleries: ProjectGalleryType[];
@@ -10,6 +10,7 @@ interface ProjectGalleryProps {
 
 export default function ProjectGallery({ galleries }: ProjectGalleryProps) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [lightboxImage, setLightboxImage] = useState<GalleryImage | null>(null);
   const active = galleries[activeIndex];
 
   return (
@@ -37,9 +38,12 @@ export default function ProjectGallery({ galleries }: ProjectGalleryProps) {
       <div className="mt-4 flex flex-wrap items-start gap-3">
         {active.images.map((img) => (
           <div key={img.src} className="flex flex-col gap-2">
-            <div
-              className="h-56 overflow-hidden rounded-lg border border-border bg-border/20 sm:h-64"
+            <button
+              type="button"
+              onClick={() => setLightboxImage(img)}
+              className="h-56 cursor-zoom-in overflow-hidden rounded-lg border border-border bg-border/20 transition-opacity hover:opacity-90 sm:h-64"
               style={{ aspectRatio: `${img.width} / ${img.height}` }}
+              aria-label={`Expand ${img.caption ?? active.label} image`}
             >
               <Image
                 src={img.src}
@@ -48,7 +52,7 @@ export default function ProjectGallery({ galleries }: ProjectGalleryProps) {
                 height={img.height}
                 className="h-full w-full object-cover"
               />
-            </div>
+            </button>
             {img.caption && (
               <span className="text-center text-xs font-medium uppercase tracking-wide text-muted">
                 {img.caption}
@@ -57,6 +61,32 @@ export default function ProjectGallery({ galleries }: ProjectGalleryProps) {
           </div>
         ))}
       </div>
+
+      {lightboxImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-6"
+          onClick={() => setLightboxImage(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <button
+            type="button"
+            onClick={() => setLightboxImage(null)}
+            className="absolute right-6 top-6 text-3xl leading-none text-white/80 hover:text-white"
+            aria-label="Close"
+          >
+            &times;
+          </button>
+          <Image
+            src={lightboxImage.src}
+            alt={lightboxImage.caption ?? "Expanded project image"}
+            width={lightboxImage.width}
+            height={lightboxImage.height}
+            className="max-h-[90vh] max-w-[90vw] rounded-lg object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </div>
   );
 }
