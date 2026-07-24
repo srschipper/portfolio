@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" fill="none">
+  <rect width="800" height="450" fill="#ecfeff"/>
+  <rect x="250" y="60" width="300" height="330" rx="20" fill="#ffffff" stroke="#06b6d4" stroke-width="3"/>
+  <circle cx="400" cy="200" r="60" fill="#a5f3fc"/>
+  <rect x="290" y="280" width="220" height="14" rx="7" fill="#cffafe"/>
+  <rect x="320" y="310" width="160" height="10" rx="5" fill="#cffafe"/>
+  <text x="400" y="400" text-anchor="middle" fill="#0891b2" font-family="system-ui" font-size="18" font-weight="600">5.3K followers · 2M+ views</text>
+</svg>
