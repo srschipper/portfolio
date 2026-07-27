@@ -1,34 +1,31 @@
 "use client";
 
 import { useEffect } from "react";
-import Script from "next/script";
-
-declare global {
-  interface Window {
-    instgrm?: {
-      Embeds?: {
-        process?: () => void;
-      };
-    };
-  }
-}
 
 interface InstagramEmbedGridProps {
   urls: string[];
 }
 
-function processEmbeds() {
-  try {
-    window.instgrm?.Embeds?.process?.();
-  } catch {
-    // Instagram's embed script occasionally isn't fully initialized yet;
-    // failing silently here is safe since the fallback link still works.
-  }
-}
-
 export default function InstagramEmbedGrid({ urls }: InstagramEmbedGridProps) {
   useEffect(() => {
-    processEmbeds();
+    // Instagram's embed.js scans the page for .instagram-media blockquotes
+    // and renders them the moment it loads. Since this component can mount
+    // after that initial load (switching tabs, or another Instagram embed
+    // elsewhere on the page already triggered it), we inject a fresh,
+    // cache-busted script tag every time this mounts so Instagram re-scans
+    // the page and renders these specific embeds.
+    const script = document.createElement("script");
+    script.src = `https://www.instagram.com/embed.js?_=${Date.now()}`;
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      try {
+        document.body.removeChild(script);
+      } catch {
+        // Script may already be gone; nothing to clean up.
+      }
+    };
   }, [urls]);
 
   return (
@@ -46,13 +43,6 @@ export default function InstagramEmbedGrid({ urls }: InstagramEmbedGridProps) {
           </a>
         </blockquote>
       ))}
-      <Script
-        src="https://www.instagram.com/embed.js"
-        strategy="lazyOnload"
-        onLoad={processEmbeds}
-        onReady={processEmbeds}
-      />
     </div>
   );
 }
-

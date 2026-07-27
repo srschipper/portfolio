@@ -26,7 +26,11 @@ export default function TikTokEmbedGrid({ urls }: TikTokEmbedGridProps) {
     document.body.appendChild(script);
 
     return () => {
-      document.body.removeChild(script);
+      try {
+        document.body.removeChild(script);
+      } catch {
+        // Script may already be gone; nothing to clean up.
+      }
     };
   }, [urls]);
 
