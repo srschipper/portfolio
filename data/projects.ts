@@ -18,7 +18,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    title: "UDance Digital Campaign",
+    title: "The Andrew McDonough B+ Foundation - UDance Dance Marathon",
     description:
       "Led brand and digital marketing for a large-scale nonprofit dance marathon, designing merch, campaign graphics, and event-day branding that helped drive $1.78M in fundraising for childhood cancer research.",
     tags: ["Brand Design", "Social Media", "Event Branding", "Fundraising"],
@@ -30,6 +30,10 @@ export const projects: Project[] = [
           { src: "/images/udance/graphics-1.jpg", width: 787, height: 1400 },
           { src: "/images/udance/graphics-2.jpg", width: 787, height: 1400 },
           { src: "/images/udance/graphics-3.jpg", width: 787, height: 1400 },
+          { src: "/images/udance/graphics-4.jpg", width: 940, height: 788 },
+          { src: "/images/udance/graphics-5.jpg", width: 787, height: 1400 },
+          { src: "/images/udance/graphics-6.jpg", width: 787, height: 1400 },
+          { src: "/images/udance/graphics-7.jpg", width: 787, height: 1400 },
         ],
       },
       {
@@ -47,9 +51,11 @@ export const projects: Project[] = [
       {
         label: "Merch Design",
         images: [
-          { src: "/images/udance/merch-1.jpg", width: 1400, height: 788 },
           { src: "/images/udance/merch-2.jpg", width: 1400, height: 788 },
           { src: "/images/udance/merch-3.jpg", width: 1400, height: 788 },
+          { src: "/images/udance/merch-4.jpg", width: 1400, height: 788 },
+          { src: "/images/udance/merch-5.jpg", width: 1400, height: 788 },
+          { src: "/images/udance/merch-6.jpg", width: 1400, height: 788 },
         ],
       },
     ],

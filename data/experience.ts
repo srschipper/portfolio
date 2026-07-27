@@ -14,17 +14,6 @@ export const experience: Experience[] = [
     ],
   },
   {
-    role: "Social Media & Content Manager (Part-Time)",
-    company: "HUSTLE Cycle + Strength",
-    period: "July 2024 — August 2025",
-    description: "Owned social media strategy and content planning across Instagram and TikTok.",
-    highlights: [
-      "Grew brand awareness and strengthened community engagement through photo and short-form video content",
-      "Led paid social campaigns across Meta to drive membership inquiries, trial signups, and local brand awareness",
-      "Created content highlighting classes, coaches, member success stories, and gym culture",
-    ],
-  },
-  {
     role: "Digital Marketing Specialist",
     company: "Appian Corporation",
     period: "July 2023 — October 2024",
@@ -55,6 +44,17 @@ export const experience: Experience[] = [
       "Helped drive $1.78M in fundraising through multi-channel digital campaigns across social, email, web, and merchandise",
       "Organically grew Instagram to 10K+ followers and TikTok to 2K+ followers",
       "Led brand and digital marketing strategy supporting childhood cancer awareness and research",
+    ],
+  },
+  {
+    role: "Social Media & Content Manager (Part-Time)",
+    company: "HUSTLE Cycle + Strength",
+    period: "July 2024 — August 2025",
+    description: "Owned social media strategy and content planning across Instagram and TikTok.",
+    highlights: [
+      "Grew brand awareness and strengthened community engagement through photo and short-form video content",
+      "Led paid social campaigns across Meta to drive membership inquiries, trial signups, and local brand awareness",
+      "Created content highlighting classes, coaches, member success stories, and gym culture",
     ],
   },
 ];
