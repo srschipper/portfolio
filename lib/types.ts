@@ -20,9 +20,20 @@ export interface GalleryImage {
   caption?: string;
 }
 
+export interface MediaLink {
+  title: string;
+  source: string;
+  url: string;
+  description?: string;
+}
+
 export interface ProjectGallery {
   label: string;
-  images: GalleryImage[];
+  images?: GalleryImage[];
+  links?: MediaLink[];
+  brands?: string[];
+  instagramEmbeds?: string[];
+  tiktokEmbeds?: string[];
 }
 
 export interface Project {

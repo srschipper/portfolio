@@ -16,6 +16,7 @@
   --accent-appian: #2f5ce0;
   --accent-photo: #c2792f;
   --accent-milo: #0d9f9f;
+  --accent-cribl: #0ea5e9;
 }
 
 @theme inline {
@@ -31,6 +32,7 @@
   --color-accent-appian: var(--accent-appian);
   --color-accent-photo: var(--accent-photo);
   --color-accent-milo: var(--accent-milo);
+  --color-accent-cribl: var(--accent-cribl);
   --font-sans: var(--font-inter);
   --font-display: var(--font-fraunces);
   --font-mono: var(--font-jetbrains-mono);

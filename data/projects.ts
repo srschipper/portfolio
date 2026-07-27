@@ -2,6 +2,31 @@ import type { Project } from "@/lib/types";
 
 export const projects: Project[] = [
   {
+    title: "Cribl",
+    accentColor: "var(--accent-cribl)",
+    description:
+      "Developed audience-specific digital marketing strategies across web, social, email, and content channels, including paid social campaigns that drove webinar registrations and audience engagement.",
+    tags: ["Paid Social", "Digital Marketing", "B2B", "Demand Generation"],
+    image: "/images/cribl/paid-social-1.jpg",
+    galleries: [
+      {
+        label: "Paid Social Ads",
+        images: [
+          { src: "/images/cribl/paid-social-1.jpg", width: 456, height: 577 },
+          { src: "/images/cribl/paid-social-2.jpg", width: 457, height: 609 },
+          { src: "/images/cribl/paid-social-3.jpg", width: 456, height: 581 },
+        ],
+      },
+      {
+        label: "Landing Page Optimization",
+        images: [
+          { src: "/images/cribl/landing-1.jpg", width: 1400, height: 1500, caption: "Webinar Landing Page" },
+          { src: "/images/cribl/landing-2.jpg", width: 1400, height: 1500, caption: "Webinars Hub Page" },
+        ],
+      },
+    ],
+  },
+  {
     title: "Appian Website Redesign",
     accentColor: "var(--accent-appian)",
     description:
@@ -60,6 +85,76 @@ export const projects: Project[] = [
           { src: "/images/udance/merch-6.jpg", width: 1400, height: 788 },
         ],
       },
+      {
+        label: "PR & Media",
+        links: [
+          {
+            title: "UDance recap reel",
+            source: "Instagram",
+            url: "https://www.instagram.com/reel/CrdzGrOOOGi/",
+            description: "A recap reel capturing the energy of the dance marathon.",
+          },
+          {
+            title: "UDance 2022 raises $1.8 million for childhood cancer",
+            source: "Town Square Delaware",
+            url: "https://townsquaredelaware.com/udance-2022-raises-1-8-million-for-childhood-cancer/",
+            description:
+              "Coverage of the 2022 marathon, featuring an interview with Sabrina, UDance's media engagement and website chair.",
+          },
+          {
+            title: "7,000 to attend UDance, raise $$$ for childhood cancer",
+            source: "Delaware LIVE News",
+            url: "https://delawarelive.com/7000-to-attend-udance-raise-for-childhood-cancer/",
+            description:
+              "Preview coverage of the 2023 marathon, featuring an interview with Sabrina as UDance's digital communications director.",
+          },
+          {
+            title: "UDance 2023 raises more than $1.7 million",
+            source: "UDaily, University of Delaware",
+            url: "https://www.udel.edu/udaily/2023/april/udance-dance-marathon-andrew-mcdonough-childhood-cancer-charity/",
+            description: "The University of Delaware's official recap of the 17th annual dance marathon.",
+          },
+        ],
+      },
+      {
+        label: "Brand Partnerships",
+        brands: ["Little Words Project", "Bubble Skincare", "High 5 Hospitality"],
+        links: [
+          {
+            title: "Partnership post: Little Words Project",
+            source: "Instagram",
+            url: "https://www.instagram.com/p/CqDUaVJtnWm/",
+            description: "Collaboration post with Little Words Project supporting UDance.",
+          },
+          {
+            title: "Partnership post: Bubble Skincare",
+            source: "Instagram",
+            url: "https://www.instagram.com/p/CpfWOsnucVm/",
+            description: "Collaboration post with Bubble Skincare supporting UDance.",
+          },
+          {
+            title: "Partnership post: High 5 Hospitality",
+            source: "Instagram",
+            url: "https://www.instagram.com/p/CrZ6O-iO3d1/",
+            description: "Collaboration post with High 5 Hospitality supporting UDance.",
+          },
+        ],
+      },
+      {
+        label: "TikTok Content",
+        tiktokEmbeds: [
+          "https://www.tiktok.com/@udancedelaware/video/7196743748171140394",
+          "https://www.tiktok.com/@udancedelaware/video/7223828012658117931",
+        ],
+      },
+      {
+        label: "Instagram Content",
+        instagramEmbeds: [
+          "https://www.instagram.com/p/CgW_55luU36/",
+          "https://www.instagram.com/p/CoUre4IufIk/",
+          "https://www.instagram.com/p/CjDSsxENZ4x/",
+        ],
+      },
     ],
   },
   {
@@ -85,6 +180,23 @@ export const projects: Project[] = [
           { src: "/images/hustle/campaign-2.jpg", width: 787, height: 1400 },
           { src: "/images/hustle/campaign-3.jpg", width: 787, height: 1400 },
           { src: "/images/hustle/campaign-4.jpg", width: 787, height: 1400 },
+        ],
+      },
+      {
+        label: "Short-Form Video Content",
+        instagramEmbeds: [
+          "https://www.instagram.com/reel/DHb3y3RyDEH/",
+          "https://www.instagram.com/reel/DDPtHasRq-1/",
+          "https://www.instagram.com/reel/C_teJIZyDFy/",
+          "https://www.instagram.com/reel/DETFohtSmqt/",
+        ],
+      },
+      {
+        label: "Social Media Posts",
+        instagramEmbeds: [
+          "https://www.instagram.com/p/C_1hlGYyBbp/",
+          "https://www.instagram.com/p/DGEbcwNSCtg/",
+          "https://www.instagram.com/p/DH56UXSxBSO/",
         ],
       },
     ],

@@ -2,6 +2,8 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
+import InstagramEmbedGrid from "@/components/InstagramEmbedGrid";
+import TikTokEmbedGrid from "@/components/TikTokEmbedGrid";
 import type { GalleryImage, ProjectGallery as ProjectGalleryType } from "@/lib/types";
 
 interface ProjectGalleryProps {
@@ -45,57 +47,118 @@ export default function ProjectGallery({ galleries, accentColor = "var(--accent)
           ))}
         </div>
       )}
-      <div className="relative mt-4">
-        <div
-          ref={scrollRef}
-          className="flex items-start gap-3 overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        >
-          {active.images.map((img) => (
-            <div key={img.src} className="flex shrink-0 flex-col gap-2">
+
+      {active.tiktokEmbeds ? (
+        <div className="mt-4">
+          <TikTokEmbedGrid urls={active.tiktokEmbeds} />
+        </div>
+      ) : active.instagramEmbeds ? (
+        <div className="mt-4">
+          <InstagramEmbedGrid urls={active.instagramEmbeds} />
+        </div>
+      ) : active.links ? (
+        <div className="mt-4">
+          {active.brands && (
+            <div className="mb-4 flex flex-wrap gap-2">
+              {active.brands.map((brand) => (
+                <span
+                  key={brand}
+                  className="rounded-full border border-border bg-card px-4 py-1.5 font-display text-sm font-medium text-foreground"
+                >
+                  {brand}
+                </span>
+              ))}
+            </div>
+          )}
+          <div className="flex flex-col gap-3">
+          {active.links.map((link) => (
+            <a
+              key={link.url}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-start gap-4 rounded-lg border border-border bg-card p-4 transition-colors hover:border-[var(--link-accent)]"
+              style={{ ["--link-accent" as string]: accentColor }}
+            >
+              <span
+                className="mt-1 h-full w-1 shrink-0 self-stretch rounded-full"
+                style={{ backgroundColor: accentColor }}
+                aria-hidden="true"
+              />
+              <span className="flex-1">
+                <span className="block font-mono text-xs font-medium uppercase tracking-wider text-muted">
+                  {link.source}
+                </span>
+                <span className="mt-1 block font-display text-lg font-semibold text-foreground group-hover:text-[var(--link-accent)]">
+                  {link.title}
+                </span>
+                {link.description && (
+                  <span className="mt-1 block text-sm text-muted">{link.description}</span>
+                )}
+              </span>
+              <span
+                className="mt-1 shrink-0 text-lg text-muted transition-transform group-hover:translate-x-1 group-hover:text-[var(--link-accent)]"
+                aria-hidden="true"
+              >
+                &rarr;
+              </span>
+            </a>
+          ))}
+          </div>
+        </div>
+      ) : (
+        <div className="relative mt-4">
+          <div
+            ref={scrollRef}
+            className="flex items-start gap-3 overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {active.images?.map((img) => (
+              <div key={img.src} className="flex shrink-0 flex-col gap-2">
+                <button
+                  type="button"
+                  onClick={() => setLightboxImage(img)}
+                  className="h-56 cursor-zoom-in overflow-hidden rounded-lg border border-border bg-border/20 transition-opacity hover:opacity-90 sm:h-64"
+                  style={{ aspectRatio: `${img.width} / ${img.height}` }}
+                  aria-label={`Expand ${img.caption ?? active.label} image`}
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.caption ?? `${active.label} sample`}
+                    width={img.width}
+                    height={img.height}
+                    className="h-full w-full object-cover"
+                  />
+                </button>
+                {img.caption && (
+                  <span className="text-center text-xs font-medium uppercase tracking-wide text-muted">
+                    {img.caption}
+                  </span>
+                )}
+              </div>
+            ))}
+          </div>
+          {active.images && active.images.length > 3 && (
+            <>
               <button
                 type="button"
-                onClick={() => setLightboxImage(img)}
-                className="h-56 cursor-zoom-in overflow-hidden rounded-lg border border-border bg-border/20 transition-opacity hover:opacity-90 sm:h-64"
-                style={{ aspectRatio: `${img.width} / ${img.height}` }}
-                aria-label={`Expand ${img.caption ?? active.label} image`}
+                onClick={() => scroll("left")}
+                aria-label="Scroll left"
+                className="absolute -left-3 top-1/2 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-background text-foreground shadow-sm transition-colors hover:bg-border/40 sm:flex"
               >
-                <Image
-                  src={img.src}
-                  alt={img.caption ?? `${active.label} sample`}
-                  width={img.width}
-                  height={img.height}
-                  className="h-full w-full object-cover"
-                />
+                &#8592;
               </button>
-              {img.caption && (
-                <span className="text-center text-xs font-medium uppercase tracking-wide text-muted">
-                  {img.caption}
-                </span>
-              )}
-            </div>
-          ))}
+              <button
+                type="button"
+                onClick={() => scroll("right")}
+                aria-label="Scroll right"
+                className="absolute -right-3 top-1/2 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-background text-foreground shadow-sm transition-colors hover:bg-border/40 sm:flex"
+              >
+                &#8594;
+              </button>
+            </>
+          )}
         </div>
-        {active.images.length > 3 && (
-          <>
-            <button
-              type="button"
-              onClick={() => scroll("left")}
-              aria-label="Scroll left"
-              className="absolute -left-3 top-1/2 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-background text-foreground shadow-sm transition-colors hover:bg-border/40 sm:flex"
-            >
-              &#8592;
-            </button>
-            <button
-              type="button"
-              onClick={() => scroll("right")}
-              aria-label="Scroll right"
-              className="absolute -right-3 top-1/2 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-background text-foreground shadow-sm transition-colors hover:bg-border/40 sm:flex"
-            >
-              &#8594;
-            </button>
-          </>
-        )}
-      </div>
+      )}
 
       {lightboxImage && (
         <div
