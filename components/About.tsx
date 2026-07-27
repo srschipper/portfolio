@@ -8,7 +8,7 @@ export default function About() {
       <SectionHeading
         id="about"
         eyebrow="About"
-        title="A bit about me"
+        title="About me"
         subtitle="A little bit about me and what I do."
       />
       <div className="flex flex-col items-start gap-10 md:flex-row md:items-center">
