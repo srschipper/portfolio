@@ -23,7 +23,7 @@ export default function Navbar() {
           href="#"
           className="font-display text-lg font-semibold tracking-tight text-foreground transition-colors hover:text-accent"
         >
-          {profile.name.split(" ")[0]}
+          {profile.name}
         </a>
 
         <ul className="hidden items-center gap-8 md:flex">
