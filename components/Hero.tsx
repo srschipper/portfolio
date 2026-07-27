@@ -2,9 +2,9 @@ import { profile } from "@/data/profile";
 import SocialLinks from "@/components/SocialLinks";
 
 const roleChips = [
-  { label: "Content Strategist", color: "var(--accent-appian)", rotate: "-rotate-3" },
-  { label: "Photographer", color: "var(--accent-photo)", rotate: "rotate-2" },
-  { label: "Storyteller", color: "var(--accent-hustle)", rotate: "-rotate-2" },
+  { label: "Growth Marketer", color: "var(--accent-appian)", rotate: "-rotate-3" },
+  { label: "Brand Storyteller", color: "var(--accent-hustle)", rotate: "rotate-2" },
+  { label: "Content Creator", color: "var(--accent-photo)", rotate: "-rotate-2" },
 ];
 
 export default function Hero() {
