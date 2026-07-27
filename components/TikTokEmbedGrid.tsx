@@ -11,15 +11,32 @@ function extractId(url: string): string {
   return match ? match[2] : "";
 }
 
-export default function TikTokEmbedGrid({ urls }: TikTokEmbedGridProps) {
+function TikTokBlockquote({ url }: { url: string }) {
+  // Same reasoning as the Instagram component: TikTok's embed script replaces
+  // this blockquote with an iframe, so React must never manage or reconcile
+  // this container's children after the initial insert.
   const containerRef = useRef<HTMLDivElement>(null);
+  const initialized = useRef(false);
 
   useEffect(() => {
-    // TikTok's embed.js only converts blockquotes present in the DOM at the
-    // moment it first runs. Since this component can mount after that (e.g.
-    // switching tabs, or a second TikTok embed elsewhere on the page already
-    // triggered the load), we inject a fresh, cache-busted script tag every
-    // time this mounts so TikTok re-scans the page and renders these embeds.
+    if (initialized.current || !containerRef.current) return;
+    initialized.current = true;
+    const videoId = extractId(url);
+    containerRef.current.innerHTML = `
+      <blockquote class="tiktok-embed" cite="${url}" data-video-id="${videoId}" style="max-width:325px;min-width:325px">
+        <section><a target="_blank" rel="noopener noreferrer" href="${url}">View on TikTok</a></section>
+      </blockquote>
+    `;
+  }, [url]);
+
+  return <div ref={containerRef} />;
+}
+
+export default function TikTokEmbedGrid({ urls }: TikTokEmbedGridProps) {
+  useEffect(() => {
+    // TikTok has no documented "reprocess" API, so we trigger a fresh,
+    // cache-busted script load to make it re-scan the page for any
+    // not-yet-processed .tiktok-embed blockquotes (including these).
     const script = document.createElement("script");
     script.src = `https://www.tiktok.com/embed.js?_=${Date.now()}`;
     script.async = true;
@@ -35,25 +52,10 @@ export default function TikTokEmbedGrid({ urls }: TikTokEmbedGridProps) {
   }, [urls]);
 
   return (
-    <div ref={containerRef} className="flex flex-wrap justify-center gap-6">
-      {urls.map((url) => {
-        const videoId = extractId(url);
-        return (
-          <blockquote
-            key={url}
-            className="tiktok-embed"
-            cite={url}
-            data-video-id={videoId}
-            style={{ maxWidth: "325px", minWidth: "325px" }}
-          >
-            <section>
-              <a target="_blank" rel="noopener noreferrer" href={url}>
-                View on TikTok
-              </a>
-            </section>
-          </blockquote>
-        );
-      })}
+    <div className="flex flex-wrap justify-center gap-6">
+      {urls.map((url) => (
+        <TikTokBlockquote key={url} url={url} />
+      ))}
     </div>
   );
 }
