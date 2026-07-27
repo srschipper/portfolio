@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import type { GalleryImage, ProjectGallery as ProjectGalleryType } from "@/lib/types";
 
@@ -11,7 +11,15 @@ interface ProjectGalleryProps {
 export default function ProjectGallery({ galleries }: ProjectGalleryProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [lightboxImage, setLightboxImage] = useState<GalleryImage | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const active = galleries[activeIndex];
+
+  const scroll = (direction: "left" | "right") => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const amount = el.clientWidth * 0.8;
+    el.scrollBy({ left: direction === "left" ? -amount : amount, behavior: "smooth" });
+  };
 
   return (
     <div>
@@ -35,31 +43,56 @@ export default function ProjectGallery({ galleries }: ProjectGalleryProps) {
           ))}
         </div>
       )}
-      <div className="mt-4 flex flex-wrap items-start gap-3">
-        {active.images.map((img) => (
-          <div key={img.src} className="flex flex-col gap-2">
+      <div className="relative mt-4">
+        <div
+          ref={scrollRef}
+          className="flex items-start gap-3 overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {active.images.map((img) => (
+            <div key={img.src} className="flex shrink-0 flex-col gap-2">
+              <button
+                type="button"
+                onClick={() => setLightboxImage(img)}
+                className="h-56 cursor-zoom-in overflow-hidden rounded-lg border border-border bg-border/20 transition-opacity hover:opacity-90 sm:h-64"
+                style={{ aspectRatio: `${img.width} / ${img.height}` }}
+                aria-label={`Expand ${img.caption ?? active.label} image`}
+              >
+                <Image
+                  src={img.src}
+                  alt={img.caption ?? `${active.label} sample`}
+                  width={img.width}
+                  height={img.height}
+                  className="h-full w-full object-cover"
+                />
+              </button>
+              {img.caption && (
+                <span className="text-center text-xs font-medium uppercase tracking-wide text-muted">
+                  {img.caption}
+                </span>
+              )}
+            </div>
+          ))}
+        </div>
+        {active.images.length > 3 && (
+          <>
             <button
               type="button"
-              onClick={() => setLightboxImage(img)}
-              className="h-56 cursor-zoom-in overflow-hidden rounded-lg border border-border bg-border/20 transition-opacity hover:opacity-90 sm:h-64"
-              style={{ aspectRatio: `${img.width} / ${img.height}` }}
-              aria-label={`Expand ${img.caption ?? active.label} image`}
+              onClick={() => scroll("left")}
+              aria-label="Scroll left"
+              className="absolute -left-3 top-1/2 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-background text-foreground shadow-sm transition-colors hover:bg-border/40 sm:flex"
             >
-              <Image
-                src={img.src}
-                alt={img.caption ?? `${active.label} sample`}
-                width={img.width}
-                height={img.height}
-                className="h-full w-full object-cover"
-              />
+              &#8592;
             </button>
-            {img.caption && (
-              <span className="text-center text-xs font-medium uppercase tracking-wide text-muted">
-                {img.caption}
-              </span>
-            )}
-          </div>
-        ))}
+            <button
+              type="button"
+              onClick={() => scroll("right")}
+              aria-label="Scroll right"
+              className="absolute -right-3 top-1/2 hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-background text-foreground shadow-sm transition-colors hover:bg-border/40 sm:flex"
+            >
+              &#8594;
+            </button>
+          </>
+        )}
       </div>
 
       {lightboxImage && (

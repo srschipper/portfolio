@@ -3,7 +3,7 @@ import SocialLinks from "@/components/SocialLinks";
 
 export default function Hero() {
   return (
-    <section className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-5xl flex-col justify-center px-6 py-24">
+    <section className="mx-auto flex min-h-[65vh] max-w-5xl flex-col justify-center px-6 py-16">
       <p className="mb-4 text-sm font-medium uppercase tracking-widest text-accent">
         {profile.title}
       </p>
