@@ -122,31 +122,19 @@ export const projects: Project[] = [
       },
       {
         label: "Brand Partnerships",
-        brands: ["Little Words Project", "Bubble Skincare", "High 5 Hospitality", "Grotto Pizza"],
+        brands: ["Grotto Pizza", "Bubble Skincare", "Little Words Project", "High 5 Hospitality"],
         links: [
-          {
-            title: "Partnership post: Little Words Project",
-            source: "Instagram",
-            url: "https://www.instagram.com/p/CpfWOsnucVm/",
-            description: "Collaboration post with Little Words Project supporting UDance.",
-          },
-          {
-            title: "Partnership post: Bubble Skincare",
-            source: "Instagram",
-            url: "https://www.instagram.com/p/CpfWOsnucVm/",
-            description: "Collaboration post with Bubble Skincare supporting UDance.",
-          },
-          {
-            title: "Partnership post: High 5 Hospitality",
-            source: "Instagram",
-            url: "https://www.instagram.com/p/CpfWOsnucVm/",
-            description: "Collaboration post with High 5 Hospitality supporting UDance.",
-          },
           {
             title: "Partnership post: Grotto Pizza",
             source: "Instagram",
             url: "https://www.instagram.com/p/CpfWOsnucVm/",
             description: "Collaboration post with Grotto Pizza supporting UDance.",
+          },
+          {
+            title: "Giveaway partnership: Bubble Skincare, Little Words Project & High 5 Hospitality",
+            source: "Instagram",
+            url: "https://www.instagram.com/p/CqDUaVJtnWm/",
+            description: "Multi-brand giveaway partnership supporting UDance.",
           },
         ],
       },

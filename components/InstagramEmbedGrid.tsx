@@ -6,8 +6,8 @@ import Script from "next/script";
 declare global {
   interface Window {
     instgrm?: {
-      Embeds: {
-        process: () => void;
+      Embeds?: {
+        process?: () => void;
       };
     };
   }
@@ -17,11 +17,18 @@ interface InstagramEmbedGridProps {
   urls: string[];
 }
 
+function processEmbeds() {
+  try {
+    window.instgrm?.Embeds?.process?.();
+  } catch {
+    // Instagram's embed script occasionally isn't fully initialized yet;
+    // failing silently here is safe since the fallback link still works.
+  }
+}
+
 export default function InstagramEmbedGrid({ urls }: InstagramEmbedGridProps) {
   useEffect(() => {
-    if (window.instgrm) {
-      window.instgrm.Embeds.process();
-    }
+    processEmbeds();
   }, [urls]);
 
   return (
@@ -42,9 +49,10 @@ export default function InstagramEmbedGrid({ urls }: InstagramEmbedGridProps) {
       <Script
         src="https://www.instagram.com/embed.js"
         strategy="lazyOnload"
-        onLoad={() => window.instgrm?.Embeds.process()}
-        onReady={() => window.instgrm?.Embeds.process()}
+        onLoad={processEmbeds}
+        onReady={processEmbeds}
       />
     </div>
   );
 }
+

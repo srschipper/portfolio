@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
+import EmbedErrorBoundary from "@/components/EmbedErrorBoundary";
 import InstagramEmbedGrid from "@/components/InstagramEmbedGrid";
 import TikTokEmbedGrid from "@/components/TikTokEmbedGrid";
 import type { GalleryImage, ProjectGallery as ProjectGalleryType } from "@/lib/types";
@@ -23,6 +24,38 @@ export default function ProjectGallery({ galleries, accentColor = "var(--accent)
     const amount = el.clientWidth * 0.8;
     el.scrollBy({ left: direction === "left" ? -amount : amount, behavior: "smooth" });
   };
+
+  const linkCards = active.links?.map((link) => (
+    <a
+      key={link.url}
+      href={link.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group flex items-start gap-4 rounded-lg border border-border bg-card p-4 transition-colors hover:border-[var(--link-accent)]"
+      style={{ ["--link-accent" as string]: accentColor }}
+    >
+      <span
+        className="mt-1 h-full w-1 shrink-0 self-stretch rounded-full"
+        style={{ backgroundColor: accentColor }}
+        aria-hidden="true"
+      />
+      <span className="flex-1">
+        <span className="block font-mono text-xs font-medium uppercase tracking-wider text-muted">
+          {link.source}
+        </span>
+        <span className="mt-1 block font-display text-lg font-semibold text-foreground group-hover:text-[var(--link-accent)]">
+          {link.title}
+        </span>
+        {link.description && <span className="mt-1 block text-sm text-muted">{link.description}</span>}
+      </span>
+      <span
+        className="mt-1 shrink-0 text-lg text-muted transition-transform group-hover:translate-x-1 group-hover:text-[var(--link-accent)]"
+        aria-hidden="true"
+      >
+        &rarr;
+      </span>
+    </a>
+  ));
 
   return (
     <div>
@@ -50,13 +83,9 @@ export default function ProjectGallery({ galleries, accentColor = "var(--accent)
 
       {active.tiktokEmbeds && (
         <div className="mt-4">
-          <TikTokEmbedGrid urls={active.tiktokEmbeds} />
-        </div>
-      )}
-
-      {active.instagramEmbeds && (
-        <div className="mt-4">
-          <InstagramEmbedGrid urls={active.instagramEmbeds} />
+          <EmbedErrorBoundary>
+            <TikTokEmbedGrid urls={active.tiktokEmbeds} />
+          </EmbedErrorBoundary>
         </div>
       )}
 
@@ -73,42 +102,26 @@ export default function ProjectGallery({ galleries, accentColor = "var(--accent)
         </div>
       )}
 
-      {active.links && (
-        <div className="mt-4 flex flex-col gap-3">
-          {active.links.map((link) => (
-            <a
-              key={link.url}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-start gap-4 rounded-lg border border-border bg-card p-4 transition-colors hover:border-[var(--link-accent)]"
-              style={{ ["--link-accent" as string]: accentColor }}
-            >
-              <span
-                className="mt-1 h-full w-1 shrink-0 self-stretch rounded-full"
-                style={{ backgroundColor: accentColor }}
-                aria-hidden="true"
-              />
-              <span className="flex-1">
-                <span className="block font-mono text-xs font-medium uppercase tracking-wider text-muted">
-                  {link.source}
-                </span>
-                <span className="mt-1 block font-display text-lg font-semibold text-foreground group-hover:text-[var(--link-accent)]">
-                  {link.title}
-                </span>
-                {link.description && (
-                  <span className="mt-1 block text-sm text-muted">{link.description}</span>
-                )}
-              </span>
-              <span
-                className="mt-1 shrink-0 text-lg text-muted transition-transform group-hover:translate-x-1 group-hover:text-[var(--link-accent)]"
-                aria-hidden="true"
-              >
-                &rarr;
-              </span>
-            </a>
-          ))}
+      {active.instagramEmbeds && active.links ? (
+        <div className="mt-4 flex flex-col gap-6 md:flex-row md:items-start">
+          <div className="flex justify-start md:shrink-0">
+            <EmbedErrorBoundary>
+              <InstagramEmbedGrid urls={active.instagramEmbeds} />
+            </EmbedErrorBoundary>
+          </div>
+          <div className="flex flex-1 flex-col gap-3">{linkCards}</div>
         </div>
+      ) : (
+        <>
+          {active.instagramEmbeds && (
+            <div className="mt-4">
+              <EmbedErrorBoundary>
+                <InstagramEmbedGrid urls={active.instagramEmbeds} />
+              </EmbedErrorBoundary>
+            </div>
+          )}
+          {active.links && <div className="mt-4 flex flex-col gap-3">{linkCards}</div>}
+        </>
       )}
 
       {active.images && (
