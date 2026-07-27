@@ -6,7 +6,16 @@ export const projects: Project[] = [
     accentColor: "var(--accent-cribl)",
     description:
       "Developed audience-specific digital marketing strategies across web, social, email, and content channels, including paid social campaigns that drove webinar registrations and audience engagement.",
-    tags: ["Paid Social", "Digital Marketing", "B2B", "Demand Generation"],
+    tags: [
+      "Paid Social",
+      "Digital Marketing",
+      "Webinars",
+      "Content Management",
+      "A/B Testing",
+      "Web Optimization",
+      "Integrated Marketing",
+      "Campaign Management",
+    ],
     image: "/images/cribl/paid-social-1.jpg",
     galleries: [
       {
@@ -87,13 +96,8 @@ export const projects: Project[] = [
       },
       {
         label: "PR & Media",
+        instagramEmbeds: ["https://www.instagram.com/reel/CrdzGrOOOGi/"],
         links: [
-          {
-            title: "UDance recap reel",
-            source: "Instagram",
-            url: "https://www.instagram.com/reel/CrdzGrOOOGi/",
-            description: "A recap reel capturing the energy of the dance marathon.",
-          },
           {
             title: "UDance 2022 raises $1.8 million for childhood cancer",
             source: "Town Square Delaware",
@@ -118,12 +122,12 @@ export const projects: Project[] = [
       },
       {
         label: "Brand Partnerships",
-        brands: ["Little Words Project", "Bubble Skincare", "High 5 Hospitality"],
+        brands: ["Little Words Project", "Bubble Skincare", "High 5 Hospitality", "Grotto Pizza"],
         links: [
           {
             title: "Partnership post: Little Words Project",
             source: "Instagram",
-            url: "https://www.instagram.com/p/CqDUaVJtnWm/",
+            url: "https://www.instagram.com/p/CpfWOsnucVm/",
             description: "Collaboration post with Little Words Project supporting UDance.",
           },
           {
@@ -135,8 +139,14 @@ export const projects: Project[] = [
           {
             title: "Partnership post: High 5 Hospitality",
             source: "Instagram",
-            url: "https://www.instagram.com/p/CrZ6O-iO3d1/",
+            url: "https://www.instagram.com/p/CpfWOsnucVm/",
             description: "Collaboration post with High 5 Hospitality supporting UDance.",
+          },
+          {
+            title: "Partnership post: Grotto Pizza",
+            source: "Instagram",
+            url: "https://www.instagram.com/p/CpfWOsnucVm/",
+            description: "Collaboration post with Grotto Pizza supporting UDance.",
           },
         ],
       },
@@ -204,8 +214,7 @@ export const projects: Project[] = [
   {
     title: "Shot by Sabrina",
     accentColor: "var(--accent-photo)",
-    description:
-      "Portrait, lifestyle, and pet photography brand showcasing creative visual storytelling across Instagram.",
+    description: "Portrait, lifestyle, event, and pet photography brand",
     tags: ["Photography", "Lightroom", "Creative Direction", "Instagram"],
     liveUrl: "https://instagram.com/shot.by.sabrina",
     image: "/images/project-photography.svg",

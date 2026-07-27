@@ -48,29 +48,33 @@ export default function ProjectGallery({ galleries, accentColor = "var(--accent)
         </div>
       )}
 
-      {active.tiktokEmbeds ? (
+      {active.tiktokEmbeds && (
         <div className="mt-4">
           <TikTokEmbedGrid urls={active.tiktokEmbeds} />
         </div>
-      ) : active.instagramEmbeds ? (
+      )}
+
+      {active.instagramEmbeds && (
         <div className="mt-4">
           <InstagramEmbedGrid urls={active.instagramEmbeds} />
         </div>
-      ) : active.links ? (
-        <div className="mt-4">
-          {active.brands && (
-            <div className="mb-4 flex flex-wrap gap-2">
-              {active.brands.map((brand) => (
-                <span
-                  key={brand}
-                  className="rounded-full border border-border bg-card px-4 py-1.5 font-display text-sm font-medium text-foreground"
-                >
-                  {brand}
-                </span>
-              ))}
-            </div>
-          )}
-          <div className="flex flex-col gap-3">
+      )}
+
+      {active.brands && (
+        <div className="mt-4 flex flex-wrap gap-2">
+          {active.brands.map((brand) => (
+            <span
+              key={brand}
+              className="rounded-full border border-border bg-card px-4 py-1.5 font-display text-sm font-medium text-foreground"
+            >
+              {brand}
+            </span>
+          ))}
+        </div>
+      )}
+
+      {active.links && (
+        <div className="mt-4 flex flex-col gap-3">
           {active.links.map((link) => (
             <a
               key={link.url}
@@ -104,15 +108,16 @@ export default function ProjectGallery({ galleries, accentColor = "var(--accent)
               </span>
             </a>
           ))}
-          </div>
         </div>
-      ) : (
+      )}
+
+      {active.images && (
         <div className="relative mt-4">
           <div
             ref={scrollRef}
             className="flex items-start gap-3 overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
-            {active.images?.map((img) => (
+            {active.images.map((img) => (
               <div key={img.src} className="flex shrink-0 flex-col gap-2">
                 <button
                   type="button"
@@ -137,7 +142,7 @@ export default function ProjectGallery({ galleries, accentColor = "var(--accent)
               </div>
             ))}
           </div>
-          {active.images && active.images.length > 3 && (
+          {active.images.length > 3 && (
             <>
               <button
                 type="button"
