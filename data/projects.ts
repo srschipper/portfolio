@@ -167,8 +167,6 @@ export const projects: Project[] = [
         label: "Social Media Graphics",
         images: [
           { src: "/images/hustle/spotlight-1.jpg", width: 787, height: 1400 },
-          { src: "/images/hustle/spotlight-2.jpg", width: 787, height: 1400 },
-          { src: "/images/hustle/spotlight-3.jpg", width: 787, height: 1400 },
           { src: "/images/hustle/campaign-1.jpg", width: 787, height: 1400 },
           { src: "/images/hustle/campaign-2.jpg", width: 787, height: 1400 },
           { src: "/images/hustle/campaign-3.jpg", width: 787, height: 1400 },

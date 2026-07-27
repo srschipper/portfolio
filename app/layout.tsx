@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Fraunces, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { profile } from "@/data/profile";
@@ -50,6 +51,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <Script src="https://www.instagram.com/embed.js" strategy="lazyOnload" />
       </body>
     </html>
   );
