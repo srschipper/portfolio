@@ -3,6 +3,7 @@ import type { Project } from "@/lib/types";
 export const projects: Project[] = [
   {
     title: "Appian Website Redesign",
+    accentColor: "var(--accent-appian)",
     description:
       "Led content strategy, creative direction, and UX optimization for a 200+ page enterprise website redesign that strengthened brand storytelling and improved the customer experience.",
     tags: ["Content Strategy", "UX Optimization", "AEM", "Lead Generation"],
@@ -19,6 +20,7 @@ export const projects: Project[] = [
   },
   {
     title: "The Andrew McDonough B+ Foundation - UDance Dance Marathon",
+    accentColor: "var(--accent-udance)",
     description:
       "Led brand and digital marketing for a large-scale nonprofit dance marathon, designing merch, campaign graphics, and event-day branding that helped drive $1.78M in fundraising for childhood cancer research.",
     tags: ["Brand Design", "Social Media", "Event Branding", "Fundraising"],
@@ -62,6 +64,7 @@ export const projects: Project[] = [
   },
   {
     title: "HUSTLE Cycle + Strength Social Content",
+    accentColor: "var(--accent-hustle)",
     description:
       "Owned social media content and campaign design for a boutique fitness studio, creating coach spotlights and promo graphics that grew brand awareness and drove membership inquiries.",
     tags: ["Social Media", "Graphic Design", "Content Strategy", "Meta Ads"],
@@ -88,6 +91,7 @@ export const projects: Project[] = [
   },
   {
     title: "Shot by Sabrina",
+    accentColor: "var(--accent-photo)",
     description:
       "Portrait, lifestyle, and pet photography brand showcasing creative visual storytelling across Instagram.",
     tags: ["Photography", "Lightroom", "Creative Direction", "Instagram"],
@@ -117,6 +121,7 @@ export const projects: Project[] = [
   },
   {
     title: "@milo.the.puggle",
+    accentColor: "var(--accent-milo)",
     description:
       "Social media content creator building an engaged TikTok audience with 5.3K followers, 650K+ likes, and a top video reaching 2M+ views.",
     tags: ["TikTok", "Short-Form Video", "Content Creation", "Community Growth"],

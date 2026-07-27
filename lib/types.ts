@@ -34,6 +34,7 @@ export interface Project {
   image?: string;
   galleries?: ProjectGallery[];
   tiktokEmbeds?: string[];
+  accentColor?: string;
 }
 
 export interface Experience {

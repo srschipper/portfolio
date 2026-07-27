@@ -21,7 +21,7 @@ export default function Navbar() {
       >
         <a
           href="#"
-          className="text-lg font-semibold tracking-tight text-foreground transition-colors hover:text-accent"
+          className="font-display text-lg font-semibold tracking-tight text-foreground transition-colors hover:text-accent"
         >
           {profile.name.split(" ")[0]}
         </a>
@@ -31,13 +31,20 @@ export default function Navbar() {
             <li key={href}>
               <a
                 href={href}
-                className="text-sm font-medium text-muted transition-colors hover:text-foreground"
+                className="font-mono text-xs font-medium uppercase tracking-wider text-muted transition-colors hover:text-foreground"
               >
                 {label}
               </a>
             </li>
           ))}
         </ul>
+
+        <a
+          href="#contact"
+          className="hidden rounded-full bg-foreground px-5 py-2 font-mono text-xs font-medium uppercase tracking-wider text-background transition-colors hover:bg-accent md:inline-flex"
+        >
+          Contact
+        </a>
 
         <button
           type="button"
@@ -66,13 +73,22 @@ export default function Navbar() {
               <li key={href}>
                 <a
                   href={href}
-                  className="block text-sm font-medium text-muted transition-colors hover:text-foreground"
+                  className="block font-mono text-xs font-medium uppercase tracking-wider text-muted transition-colors hover:text-foreground"
                   onClick={() => setMenuOpen(false)}
                 >
                   {label}
                 </a>
               </li>
             ))}
+            <li>
+              <a
+                href="#contact"
+                className="inline-flex rounded-full bg-foreground px-5 py-2 font-mono text-xs font-medium uppercase tracking-wider text-background"
+                onClick={() => setMenuOpen(false)}
+              >
+                Contact
+              </a>
+            </li>
           </ul>
         </div>
       )}

@@ -6,9 +6,10 @@ import type { GalleryImage, ProjectGallery as ProjectGalleryType } from "@/lib/t
 
 interface ProjectGalleryProps {
   galleries: ProjectGalleryType[];
+  accentColor?: string;
 }
 
-export default function ProjectGallery({ galleries }: ProjectGalleryProps) {
+export default function ProjectGallery({ galleries, accentColor = "var(--accent)" }: ProjectGalleryProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [lightboxImage, setLightboxImage] = useState<GalleryImage | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -32,9 +33,10 @@ export default function ProjectGallery({ galleries }: ProjectGalleryProps) {
               role="tab"
               aria-selected={index === activeIndex}
               onClick={() => setActiveIndex(index)}
+              style={index === activeIndex ? { backgroundColor: accentColor } : undefined}
               className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
                 index === activeIndex
-                  ? "bg-accent text-white"
+                  ? "text-white"
                   : "bg-border/40 text-muted hover:bg-border/70 hover:text-foreground"
               }`}
             >
