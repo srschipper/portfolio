@@ -164,16 +164,11 @@ export const projects: Project[] = [
     image: "/images/hustle/campaign-1.jpg",
     galleries: [
       {
-        label: "Coach Spotlights",
+        label: "Social Media Graphics",
         images: [
           { src: "/images/hustle/spotlight-1.jpg", width: 787, height: 1400 },
           { src: "/images/hustle/spotlight-2.jpg", width: 787, height: 1400 },
           { src: "/images/hustle/spotlight-3.jpg", width: 787, height: 1400 },
-        ],
-      },
-      {
-        label: "Campaign Graphics",
-        images: [
           { src: "/images/hustle/campaign-1.jpg", width: 787, height: 1400 },
           { src: "/images/hustle/campaign-2.jpg", width: 787, height: 1400 },
           { src: "/images/hustle/campaign-3.jpg", width: 787, height: 1400 },
@@ -202,7 +197,7 @@ export const projects: Project[] = [
   {
     title: "Shot by Sabrina",
     accentColor: "var(--accent-photo)",
-    description: "Portrait, lifestyle, event, and pet photography brand",
+    description: "Portrait, lifestyle, event, and pet photography brand.",
     tags: ["Photography", "Lightroom", "Creative Direction", "Instagram"],
     liveUrl: "https://instagram.com/shot.by.sabrina",
     image: "/images/project-photography.svg",
